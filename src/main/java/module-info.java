@@ -7,4 +7,5 @@ module test {
 	requires java.sql;
 	requires javax.jdo;
 	requires log4j;
+	requires java.desktop;
 }
