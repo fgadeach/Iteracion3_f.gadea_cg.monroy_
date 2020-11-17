@@ -144,7 +144,7 @@ public class AforoCC {
 	 * 			Métodos para manejar los Espacio
 	 *****************************************************************/
 	
-	public Espacio adicionarEspacio(long icc, String nom, int area, String t, String estado)
+	public Espacio adicionarEspacio(long icc, String nom, double area, String t, String estado)
 	{
         log.info ("Adicionando un Espacio: " + nom);
         Espacio var = pp.adicionarEspacio(icc, nom, area, t, estado);		
