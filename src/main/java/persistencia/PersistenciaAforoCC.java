@@ -497,6 +497,7 @@ public class PersistenciaAforoCC {
             pm.close();
         }
 	}
+	
 
 	/* ****************************************************************
 	 * 			Métodos para manejar los Horarios
@@ -977,6 +978,11 @@ public class PersistenciaAforoCC {
 	public List<Establecimiento> darEstablecimientos()
 	{
 		return sqlestablecimiento.darEstablecimientos(pmf.getPersistenceManager());
+	}
+	
+	public List<Establecimiento> darEstablecimientosConaforo()
+	{
+		return sqlestablecimiento.establecimientoConAforoDisponible(pmf.getPersistenceManager());
 	}
 }
 

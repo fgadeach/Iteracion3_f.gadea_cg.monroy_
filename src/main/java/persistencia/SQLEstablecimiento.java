@@ -47,7 +47,7 @@ public class SQLEstablecimiento {
 		return (Establecimiento) q.executeUnique();
 	}
 
-	public List<Object> establecimientoConAforoDisponible (PersistenceManager pm)
+	public List<Establecimiento> establecimientoConAforoDisponible (PersistenceManager pm)
 	{		
 		String sql1 = "SELECT est.nombre, lece.idEspacio, lece.id, vis.id_lector";
 		sql1 += " FROM ";
@@ -61,6 +61,6 @@ public class SQLEstablecimiento {
 		sql1 += "AND est.aforo > COUNT(vis.id_visitante)";
 		
 		Query q = pm.newQuery(SQL, sql1);
-		return q.executeList();
+		return (List<Establecimiento>) q.executeList();
 	}
 }
