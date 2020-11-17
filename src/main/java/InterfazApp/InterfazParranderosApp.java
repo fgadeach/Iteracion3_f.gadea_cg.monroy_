@@ -384,6 +384,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener{
 
     public void adicionarVisita ()
     {
+    	Date d = null;
+    	Date da = null;
     	try
     	{
     		String id_visitante = JOptionPane.showInputDialog (this, "Id del visitante?", "Adicionar visitante", JOptionPane.QUESTION_MESSAGE);
@@ -398,7 +400,9 @@ public class InterfazParranderosApp extends JFrame implements ActionListener{
             			String FechaHoraSalida = JOptionPane.showInputDialog (this, "Hora salida?", "Adicionar hora salida", JOptionPane.QUESTION_MESSAGE);
                 		if (FechaHoraSalida != null) 
                 		{
-                			VOVisita visita = parranderos.adicionarVisita(Long.parseLong(id_visitante), Long.parseLong(id_lector), Date.parse(FechaHoraEntrada), Date.parse(FechaHoraSalida));
+                			//VOVisita visita = parranderos.adicionarVisita(Long.parseLong(id_visitante), Long.parseLong(id_lector), Date.parse(FechaHoraEntrada), Date.parse(FechaHoraSalida));
+                			VOVisita visita = parranderos.adicionarVisita(Long.parseLong(id_visitante), Long.parseLong(id_lector), d, da);
+
                 			if (visita == null)
                 			{
             					throw new Exception ("No se pudo crear una visita: " + visita);
@@ -422,6 +426,68 @@ public class InterfazParranderosApp extends JFrame implements ActionListener{
     		String resultado = generarMensajeError(e);
     		panelDatos.actualizarInterfaz(resultado);
     	}
+    }
+    
+    //METODOS DE CONSULTA
+    
+    public void darAdoro()
+    {
+    	parranderos.darAforo();
+    }
+    
+    public void cambiarEstadoVisitante()
+    {
+    	String id_visitante = JOptionPane.showInputDialog (this, "Id del visitante?", "Adicionar visitante", JOptionPane.QUESTION_MESSAGE);
+		if (id_visitante != null)
+		{
+			String estado = JOptionPane.showInputDialog (this, "Estado del visitante?", "Adicionar estado", JOptionPane.QUESTION_MESSAGE);
+			if (estado != null)
+			{
+				parranderos.cambiarEstadoVisitante(Long.parseLong(id_visitante), estado);
+			}
+		}
+    	
+    }
+    
+    public void darVisitasRealizadas ()
+    {
+    	String id_visitante = JOptionPane.showInputDialog (this, "Id del visitante?", "Mostrar visitas realizadas", JOptionPane.QUESTION_MESSAGE);
+		if (id_visitante != null)
+		{
+	    	parranderos.darVisitasRealizadas(Long.parseLong(id_visitante));
+		}
+    }
+    
+    public void deshabilitarEspacio ()
+    {
+    	
+    }
+    
+    public void cambiarEstadoEspacio ()
+    {
+    	String espacio = JOptionPane.showInputDialog (this, "Id del espacio?", "Adicionar espacio", JOptionPane.QUESTION_MESSAGE);
+		if (espacio != null)
+		{
+			String estado = JOptionPane.showInputDialog (this, "Estado del espacio?", "Adicionar estado", JOptionPane.QUESTION_MESSAGE);
+			if (estado != null)
+			{
+				parranderos.cambiarEstadoEspacio(Long.parseLong(espacio), estado);
+			}
+		}
+    }
+    
+    public void rehabilitarEspacio ()
+    {
+    	String espacio = JOptionPane.showInputDialog (this, "Id del espacio?", "Adicionar espacio", JOptionPane.QUESTION_MESSAGE);
+		if (espacio != null)
+		{
+	    	parranderos.rehabilitarEspacio(Long.parseLong(espacio));
+		}
+    }
+    
+    public void establecimientoConAforoDisponible ()
+    {
+    	parranderos.darEstablecimientosConAforoDisponible();
     }
     
     //METODOS ADMINISTRATIVOS
@@ -465,13 +531,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener{
 			long eliminados [] = parranderos.limpiarParranderos();
 			
 			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
-			resultado += eliminados [0] + " Gustan eliminados\n";
-			resultado += eliminados [1] + " Sirven eliminados\n";
-			resultado += eliminados [2] + " Visitan eliminados\n";
-			resultado += eliminados [3] + " Bebidas eliminadas\n";
-			resultado += eliminados [4] + " Tipos de bebida eliminados\n";
-			resultado += eliminados [5] + " Bebedores eliminados\n";
-			resultado += eliminados [6] + " Bares eliminados\n";
+			resultado += eliminados [0] + " CC eliminados\n";
+			resultado += eliminados [1] + " Carnet eliminados\n";
+			resultado += eliminados [2] + " Horario eliminados\n";
+			resultado += eliminados [3] + " Espacio eliminadas\n";
+			resultado += eliminados [4] + " Establecimiento eliminados\n";
+			resultado += eliminados [5] + " Visitante eliminados\n";
+			resultado += eliminados [6] + " Visita eliminados\n";
+			resultado += eliminados [7] + " Lector eliminados\n";
+			resultado += eliminados [8] + " LectorCC eliminados\n";
+			resultado += eliminados [9] + " LectorEspacio eliminados\n";
+
 			resultado += "\nLimpieza terminada";
    
 			panelDatos.actualizarInterfaz(resultado);

@@ -5,12 +5,37 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
+		{ "menuTitle": "CentroComercial",
+			"options":
+			  [
+				  {
+					  "label": "Mostrar",
+					  "event": "darAforo"
+				  },
+				  {
+					"label": "Mostrar",
+					"event": "establecimientoConAforoDisponible"
+				  }
+			  ]
+		  },
 		{ "menuTitle": "Espacio",
 		  "options":
 			[
 				{
 					"label": "Adicionar",
 					"event": "adicionarEspacio"
+				},
+				{
+					"label": "Modificar",
+					"event": "deshabilitarEspacio"
+				},
+				{
+					"label": "Modificar",
+					"event": "cambiarEstadoEspacio"
+				},
+				{
+					"label": "Modificar",
+					"event": "rehabilitarEspacio"
 				}
 			]
 		},
@@ -33,6 +58,10 @@
 				  {
 					  "label": "Adicionar",
 					  "event": "adicionarVisitante"
+				  },
+				  {
+					"label": "Modificar",
+					"event": "cambiarEstadoVisitante"
 				  }
 			  ]
 		},
@@ -51,6 +80,10 @@
 				  {
 					  "label": "Adicionar",
 					  "event": "adicionarVisita"
+				  },
+				  {
+					"label": "Mostrar",
+					"event": "darVisitasRealizadas"
 				  }
 			]
 		},		
