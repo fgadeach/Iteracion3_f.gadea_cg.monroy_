@@ -5,134 +5,87 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "CentroComercial",
 		  "options":
 			[
 				{
-					"label": "CRD de TipoBebida",
-					"event": "demoTipoBebida"
+					"label": "CRD de CentroComercial",
+					"event": "demoCentroComercial"
 				}
 			]
 		},		
-		{ "menuTitle": "Bebida",
+		{ "menuTitle": "Espacio",
 		  "options":
 			[
 				{
-					"label": "CRD Bebida",
-					"event": "demoBebida"
-				},
-				{
-					"label": "Eliminar Bebidas no servidas 1",
-					"event": "demoElimNoServidas1"
-				},
-				{
-					"label": "Eliminar Bebidas no servidas 2",
-					"event": "demoElimNoServidas2"
+					"label": "CRD de Espacio",
+					"event": "demoEspacio"
 				}
 			]
 		},
-		{ "menuTitle": "Bar",
+		{ "menuTitle": "Horario",
 		  "options":
 			[
 				{
-					"label": "CRD Bar",
-					"event": "demoBar"
-				},
-				{
-					"label": "Bares y Bebidas",
-					"event": "demoBaresBebidas"
-				},
-				{
-					"label": "Aumentar sedes en una ciudad",
-					"event": "demoAumentarSedesBaresEnCiudad"
+					"label": "CRD de Horario",
+					"event": "demoHorario"
 				}
 			]
 		},
-		{ "menuTitle": "Bebedor",
+		{ "menuTitle": "Lector",
 		  "options":
 			[
 				{
-					"label": "CRD Bebedor",
-					"event": "demoBebedor"
-				},
-				{
-					"label": "Cambiar ciudad",
-					"event": "demoCambiarCiudadBebedor"
-				},
-				{
-					"label": "Bebedor y cuántas visita realiza",
-					"event": "demoBebedoresYNumVisitasRealizadas"
-				},
-				{
-					"label": "Bebedores de una ciudad",
-					"event": "demoBebedoresDeCiudad"
-				},
-				{
-					"label": "Dar Bebedor Completo",
-					"event": "demoDarBebedorCompleto"
-				},
-				{
-					"label": "* Eliminar Bebedor y sus visitas 1",
-					"event": "demoEliminarBebedorYVisitas_v1"
-				},
-				{
-					"label": "* Eliminar Bebedor y sus visitas 2",
-					"event": "demoEliminarBebedorYVisitas_v2"
+					"label": "CRD de Lector",
+					"event": "demoLector"
 				}
 			]
 		},
-		{ "menuTitle": "Gustan",
+		{ "menuTitle": "LectorCC",
 		  "options":
 			[
 				{
-					"label": "CRD Gustan",
-					"event": "demoGustan"
+					"label": "CRD de LectorCC",
+					"event": "demoLectorCC"
 				}
 			]
 		},
-		{ "menuTitle": "Sirven",
+		{ "menuTitle": "LectorEspacio",
 		  "options":
 			[
 				{
-					"label": "CRD Sirven",
-					"event": "demoSirven"
+					"label": "CRD de LectorEspacio",
+					"event": "demoLectorEspacio"
 				}
 			]
 		},
-		{ "menuTitle": "Visitan",
+		{ "menuTitle": "Visitante",
 		  "options":
 			[
 				{
-					"label": "CRD Visitan",
-					"event": "demoVisitan"
+					"label": "CRD de Visitante",
+					"event": "demoVisitante"
 				}			
 			]
 		},
-		{ "menuTitle": "Mantenimiento",
+		{ "menuTitle": "Visita",
 		  "options":
 			[
 				{
-					"label": "Mostrar log Parranderos",
-					"event": "mostrarLogParranderos"
-				},
-				{
-					"label": "Mostrar log datanucleus",
-					"event": "mostrarLogDatanuecleus"
-				},
-				{
-					"label": "Limpiar log de parranderos",
-					"event": "limpiarLogParranderos"
-				},
-				{
-					"label": "Limpiar log de datanucleus",
-					"event": "limpiarLogDatanucleus"
-				},
-				{
-					"label": "Limpiar Base de Datos",
-					"event": "limpiarBD"
+					"label": "CRD de Visita",
+					"event": "demoVisita"
 				}
 			]
-		},		
+		},	
+		{ "menuTitle": "Caernet",
+			"options":
+			  [
+				{
+					"label": "CRD de Caernet",
+					"event": "demoCarnet"
+				}
+			  ]
+		  },		
 		{ "menuTitle": "Documentación",
 		  "options":
 			[

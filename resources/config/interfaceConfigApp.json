@@ -5,50 +5,53 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "Espacio",
 		  "options":
 			[
 				{
 					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
-				},
-				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
-				},
-				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
-				},
-				{
-					"label": "Buscar por Nombre",
-					"event": "buscarTipoBebidaPorNombre"
+					"event": "adicionarEspacio"
 				}
 			]
 		},
-		{ "menuTitle": "Mantenimiento",
+		{ "menuTitle": "Establecimiento",
 		  "options":
 			[
 				{
-					"label": "Mostrar log Parranderos",
-					"event": "mostrarLogParranderos"
+					"label": "Adicionar",
+					"event": "adicionarEstablecimiento"
 				},
 				{
-					"label": "Mostrar log datanucleus",
-					"event": "mostrarLogDatanuecleus"
-				},
-				{
-					"label": "Limpiar log de parranderos",
-					"event": "limpiarLogParranderos"
-				},
-				{
-					"label": "Limpiar log de datanucleus",
-					"event": "limpiarLogDatanucleus"
-				},
-				{
-					"label": "Limpiar Base de Datos",
-					"event": "limpiarBD"
+					"label": "Eliminar",
+					"event": "eliminarEstablecimiento"
 				}
+			]
+		},
+		{ "menuTitle": "Visitante",
+			"options":
+			  [
+				  {
+					  "label": "Adicionar",
+					  "event": "adicionarVisitante"
+				  }
+			  ]
+		},
+		{ "menuTitle": "Lector",
+			"options":
+			  [
+				  {
+					  "label": "Adicionar",
+					  "event": "adicionarLector"
+				  }
+			  ]
+		  },
+		  { "menuTitle": "Visita",
+			"options":
+			[
+				  {
+					  "label": "Adicionar",
+					  "event": "adicionarVisita"
+				  }
 			]
 		},		
 		{ "menuTitle": "Documentación",

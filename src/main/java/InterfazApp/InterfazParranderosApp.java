@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
@@ -31,6 +32,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import negocio.AforoCC;
+import negocio.VOEspacio;
+import negocio.VOEstablecimiento;
+import negocio.VOLector;
+import negocio.VOVisita;
+import negocio.VOVisitante;
 
 @SuppressWarnings("serial")
 public class InterfazParranderosApp extends JFrame implements ActionListener{
@@ -159,6 +165,263 @@ public class InterfazParranderosApp extends JFrame implements ActionListener{
         	menuBar.add( menu );
         }        
         setJMenuBar ( menuBar );	
+    }
+
+    //CRUD DE ESPACIO
+
+    public void adicionarEspacio ()
+    {
+    	try
+    	{
+    		String nombreEspacio = JOptionPane.showInputDialog (this, "Nombre del espacio?", "Adicionar espacio", JOptionPane.QUESTION_MESSAGE);
+    		if (nombreEspacio != null)
+    		{
+    			String area = JOptionPane.showInputDialog (this, "Area?", "Adicionar area", JOptionPane.QUESTION_MESSAGE);
+    			if (area != null)
+    			{
+    				String tipo = JOptionPane.showInputDialog (this, "Tipo?", "Adicionar tipo", JOptionPane.QUESTION_MESSAGE);
+    				if (tipo != null)
+    				{
+    					String estado = JOptionPane.showInputDialog (this, "Estado?", "Adicionar estado", JOptionPane.QUESTION_MESSAGE);
+    					if (estado != null)
+    					{
+    						VOEspacio espacio = parranderos.adicionarEspacio(1, nombreEspacio, Double.parseDouble(area), tipo, estado);
+    						if (espacio == null)
+    						{
+    							throw new Exception ("No se pudo crear un espacio con nombre: " + nombreEspacio);
+    						}
+    						String resultado = "En adicionarEspacio\n\n";
+    						resultado += "Espacio adicionado exitosamente: " + espacio;
+    						resultado += "\n Operación terminada";
+    						panelDatos.actualizarInterfaz(resultado);
+    					}
+    				}
+    			}
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    	}
+    	catch (Exception e) 
+    	{
+    		e.printStackTrace();
+    		String resultado = generarMensajeError(e);
+    		panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    //CRUD DE ESTABLECIMIENTO
+    
+    public void adicionarEstablecimiento ()
+    {
+    	try
+    	{
+    		String idEspacio = JOptionPane.showInputDialog (this, "Id del espacio?", "Adicionar espacio", JOptionPane.QUESTION_MESSAGE);
+    		if (idEspacio != null)
+    		{
+    			String idHorario = JOptionPane.showInputDialog (this, "Id del horario?", "Adicionar horario", JOptionPane.QUESTION_MESSAGE);
+    			if (idHorario != null)
+    			{
+    				String nombre = JOptionPane.showInputDialog (this, "Nombre del establecimiento?", "Adicionar nombre", JOptionPane.QUESTION_MESSAGE);
+    				if (nombre != null)
+    				{
+    					String tipo = JOptionPane.showInputDialog (this, "Tipo del establecimiento?", "Adicionar tipo", JOptionPane.QUESTION_MESSAGE);
+    					if (tipo != null)
+    					{
+    						String aforoMax = JOptionPane.showInputDialog (this, "Aforo del establecimiento?", "Adicionar aforo", JOptionPane.QUESTION_MESSAGE);
+    						if (aforoMax != null)
+    						{
+    							VOEstablecimiento establecimiento = parranderos.adicionarEstablecimiento(Long.parseLong(idEspacio), Long.parseLong(idHorario), nombre, tipo, Integer.parseInt(aforoMax));
+        						if (establecimiento == null)
+        						{
+        							throw new Exception ("No se pudo crear un establecimiento con nombre: " + nombre);
+        						}
+        						String resultado = "En adicionarEstablecimiento\n\n";
+        						resultado += "Establecimiento adicionado exitosamente: " + establecimiento;
+        						resultado += "\n Operación terminada";
+        						panelDatos.actualizarInterfaz(resultado);
+    						}
+    						
+    					}
+    				}
+    			}
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    	}
+    	catch (Exception e) 
+    	{
+    		e.printStackTrace();
+    		String resultado = generarMensajeError(e);
+    		panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    public void eliminarEstablecimiento( )
+    {
+    	try 
+    	{
+    		String establecimientoStr = JOptionPane.showInputDialog (this, "Establecimiento?", "Borrar establecimiento", JOptionPane.QUESTION_MESSAGE);
+    		if (establecimientoStr != null)
+    		{
+    			long establecimiento = Long.valueOf (establecimientoStr);
+    			long establecimientosEliminados = parranderos.eliminarEstablecimientoPorId (establecimiento);
+
+    			String resultado = "En eliminar Establecimiento\n\n";
+    			resultado += establecimientosEliminados + " Establecimientos eliminados\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    //CRUD DE VISITANTE
+    
+    public void adicionarVisitante ()
+    {
+    	try
+    	{
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre del visitante?", "Adicionar nombre", JOptionPane.QUESTION_MESSAGE);
+			if (nombre != null)
+			{
+				String tipo = JOptionPane.showInputDialog (this, "Tipo del visitante?", "Adicionar tipo", JOptionPane.QUESTION_MESSAGE);
+				if (tipo != null)
+				{
+					String numTelefono = JOptionPane.showInputDialog (this, "Numero de telefono del visitante?", "Adicionar numero de telefono", JOptionPane.QUESTION_MESSAGE);
+					if (numTelefono != null)
+					{
+						String correo = JOptionPane.showInputDialog (this, "Correo del visitante?", "Adicionar correo", JOptionPane.QUESTION_MESSAGE);
+						if (correo != null)
+						{
+							String nomContacto = JOptionPane.showInputDialog (this, "Nombre del contacto del visitante?", "Adicionar nombre de contacto", JOptionPane.QUESTION_MESSAGE);
+							if (nomContacto != null)
+							{
+								String numContacto = JOptionPane.showInputDialog (this, "Numero del contacto del visitante?", "Adicionar numero de contacto", JOptionPane.QUESTION_MESSAGE);
+								if (numContacto != null)
+								{
+									String estado = JOptionPane.showInputDialog (this, "Estado del visitante?", "Adicionar estado", JOptionPane.QUESTION_MESSAGE);
+			    					if (estado != null)
+			    					{
+			    						String temperatura = JOptionPane.showInputDialog (this, "Temperatura del visitante?", "Adicionar temperatura", JOptionPane.QUESTION_MESSAGE);
+			        					if (temperatura != null) 
+			        					{
+			        						VOVisitante visitante = parranderos.adicionarVisitantes(nombre, tipo, Integer.parseInt(numTelefono), correo, nomContacto, Integer.parseInt(numContacto), estado, Double.parseDouble(temperatura));
+			        						if (visitante == null)
+			        						{
+			        							throw new Exception ("No se pudo crear un visitante con nombre: " + nombre);
+			        						}
+			        						String resultado = "En adicionarVisitante\n\n";
+			        						resultado += "Visitante adicionado exitosamente: " + visitante;
+			        						resultado += "\n Operación terminada";
+			        						panelDatos.actualizarInterfaz(resultado);
+			        					}
+			    					}
+								}
+							}
+						}
+					}
+				}
+			}
+			else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    	}
+    	catch (Exception e) 
+    	{
+    		e.printStackTrace();
+    		String resultado = generarMensajeError(e);
+    		panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    //CRUD DE LECTOR
+
+    public void adicionarLector ()
+    {
+    	try
+    	{
+    		String espacio = JOptionPane.showInputDialog (this, "Id del espacio?", "Adicionar espacio", JOptionPane.QUESTION_MESSAGE);
+    		if (espacio != null)
+    		{
+    			VOLector lector = parranderos.adicionarLector(espacio);
+    			if (lector == null)
+    			{
+					throw new Exception ("No se pudo crear un lector para el espacio: " + espacio);
+    			}
+    			String resultado = "En adicionarLector\n\n";
+				resultado += "Lector adicionado exitosamente: " + lector;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    	}
+    	catch (Exception e) 
+    	{
+    		e.printStackTrace();
+    		String resultado = generarMensajeError(e);
+    		panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+
+    //CRUD DE VISITA
+
+    public void adicionarVisita ()
+    {
+    	try
+    	{
+    		String id_visitante = JOptionPane.showInputDialog (this, "Id del visitante?", "Adicionar visitante", JOptionPane.QUESTION_MESSAGE);
+    		if (id_visitante != null)
+    		{
+    			String id_lector = JOptionPane.showInputDialog (this, "Id del lector?", "Adicionar lector", JOptionPane.QUESTION_MESSAGE);
+        		if (id_lector != null) 
+        		{
+        			String FechaHoraEntrada = JOptionPane.showInputDialog (this, "Hora entrada?", "Adicionar hora entrada", JOptionPane.QUESTION_MESSAGE);
+            		if (FechaHoraEntrada != null) 
+            		{
+            			String FechaHoraSalida = JOptionPane.showInputDialog (this, "Hora salida?", "Adicionar hora salida", JOptionPane.QUESTION_MESSAGE);
+                		if (FechaHoraSalida != null) 
+                		{
+                			VOVisita visita = parranderos.adicionarVisita(Long.parseLong(id_visitante), Long.parseLong(id_lector), Date.parse(FechaHoraEntrada), Date.parse(FechaHoraSalida));
+                			if (visita == null)
+                			{
+            					throw new Exception ("No se pudo crear una visita: " + visita);
+                			}
+                			String resultado = "En adicionarVisita\n\n";
+            				resultado += "Visita adicionada exitosamente: " + visita;
+            				resultado += "\n Operación terminada";
+            				panelDatos.actualizarInterfaz(resultado);
+                		}
+            		}
+        		}
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    	}
+    	catch (Exception e) 
+    	{
+    		e.printStackTrace();
+    		String resultado = generarMensajeError(e);
+    		panelDatos.actualizarInterfaz(resultado);
+    	}
     }
     
     //METODOS ADMINISTRATIVOS
