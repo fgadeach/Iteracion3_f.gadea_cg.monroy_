@@ -33,6 +33,13 @@ public class SQLVisitante {
 		return (List<Visitante>) q.execute();
 	}
 
+	public long eliminarVisitante(PersistenceManager pm, long id) 
+	{
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darSeqVisitante() + " WHERE id = ?");
+        q.setParameters(id);
+        return (long) q.executeUnique();            
+	}
+
 	public Visitante darVisitantePorIdVisitantente (PersistenceManager pm, long id) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darSeqVisitante() + " WHERE id = ?");
@@ -40,6 +47,8 @@ public class SQLVisitante {
 		q.setParameters(id);
 		return (Visitante) q.executeUnique();
 	}
+	
+	
 
 	public List<Visitante> darVisitasRealizadas (PersistenceManager pm, long idVisitante)
 	{

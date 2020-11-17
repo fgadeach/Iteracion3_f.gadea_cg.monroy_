@@ -464,6 +464,15 @@ public class AforoCC {
         return voCC;
 	}
 	
+	public long eliminarVisitantePorId (long id)
+	{
+		log.info ("Eliminando Visitante por id: " + id);
+        long resp = pp.eliminarVisitantePorId(id);		
+        log.info ("Eliminando Visitante por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
+	
 	
 	
 	/* ****************************************************************

@@ -29,6 +29,12 @@ ALTER TABLE A_VISITANTE
     
 ENABLE;
 
+ALTER TABLE A_VISITANTE
+    ADD CONSTRAINT CK_VISITANTE_TIPO
+    CHECK (TIPO IN ('Empleado', 'Cliente', 'Domiciliario'))
+    
+ENABLE;
+
 -- Creaci?n de la tabla CARNET y especificaci?n de sus restricciones
 
 CREATE TABLE A_CARNET
