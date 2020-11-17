@@ -421,6 +421,22 @@ public class AforoCC {
         return var;
 	}
 	
+	public List<Visitante> darAforo()
+	{
+		log.info ("Consultando visitantes");
+        List<Visitante> var = pp.darAforo();	
+        log.info ("Consultando Visitantes: " + var.size() + " existentes");
+        return var;
+	}
+	
+	public List<Visitante> darVisitasRealizadas(long id)
+	{
+		log.info ("Consultando visitantes");
+        List<Visitante> var = pp.darVisitasRealizadas(id);	
+        log.info ("Consultando Visitantes: " + var.size() + " existentes");
+        return var;
+	}
+	
 	public long cambiarEstadoVisitante (long id, String estado)
 	{
         log.info ("Cambiando estado de visitante: " + id);

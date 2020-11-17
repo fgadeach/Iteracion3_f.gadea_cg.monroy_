@@ -41,7 +41,7 @@ public class SQLVisitante {
 		return (Visitante) q.executeUnique();
 	}
 
-	public List<Object []> darVisitasRealizadas (PersistenceManager pm, long idVisitante)
+	public List<Visitante> darVisitasRealizadas (PersistenceManager pm, long idVisitante)
 	{
 		String sql = "SELECT lec.id, lece.id, lece.idEspacio, est.id, vis.id_lector";
 		sql += " FROM ";
@@ -59,7 +59,7 @@ public class SQLVisitante {
 
 		Query q = pm.newQuery(SQL, sql);
 		q.setParameters(idVisitante);
-		return q.executeList();
+		return (List<Visitante>)q.executeList();
 	}
 
 	public long cambiarEstadoVisitante (PersistenceManager pm, long idVisitante, String estado) 
@@ -75,7 +75,7 @@ public class SQLVisitante {
 	}
 
 
-	public List<Object>  darAforo (PersistenceManager pm)
+	public List<Visitante>  darAforo (PersistenceManager pm)
 	{		
 		String sql1 = "SELECT idvisitante, count (*) as numVisitas";
 		sql1 += " FROM " + pp.darSeqVisita();
@@ -85,6 +85,6 @@ public class SQLVisitante {
 		sql += " FROM " + pp.darSeqVisitante() + " LEFT OUTER JOIN (" + sql1 + ")";
 		sql += " ON id = id_visitante";
 		Query q = pm.newQuery(SQL, sql);
-		return q.executeList();
+		return (List<Visitante>) q.executeList();
 	}
 }

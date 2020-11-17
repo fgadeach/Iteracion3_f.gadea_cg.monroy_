@@ -840,11 +840,15 @@ public class PersistenciaAforoCC {
 		return sqlvisitante.darVisitantes(pmf.getPersistenceManager());
 	}
 
-	public Visitante darVisitantesPorId(long id)
+	public List<Visitante> darAforo()
 	{
-		return sqlvisitante.darVisitantePorIdVisitantente(pmf.getPersistenceManager(), id);
+		return sqlvisitante.darAforo(pmf.getPersistenceManager());
 	}
 
+	public List<Visitante> darVisitasRealizadas(long id)
+	{
+		return sqlvisitante.darVisitasRealizadas(pmf.getPersistenceManager(), id);
+	}
 
 
 
