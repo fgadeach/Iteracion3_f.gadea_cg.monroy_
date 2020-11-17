@@ -40,4 +40,6 @@ public class SQLVisita {
 		q.setParameters(id);
 		return (Visita) q.executeUnique();
 	}
+	
+
 }

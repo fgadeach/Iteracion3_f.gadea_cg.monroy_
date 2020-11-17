@@ -3,13 +3,16 @@
 	"unidadPersistencia": "Parranderos",
 	"tablas":
 	[
-		"Parranderos_sequence",
-		"B_TIPOBEBIDA",
-		"B_BEBIDA",
-		"B_BAR",
-		"B_BEBEDOR",
-		"B_GUSTAN",
-		"B_SIRVEN",
-		"B_VISITAN"
+		"AforoCC_sequence",
+		"B_CARNET",
+		"B_CENTROCOMERCIAL",
+		"B_ESPACIO",
+		"B_HORARIO",
+		"B_LECTOR",
+		"B_LECTORCC",
+		"B_LECTORESPACIO",
+		"B_VISITA",
+		"B_VISITANTE",
+		"B_ESTABLECIMIENTO"
 	]
 }

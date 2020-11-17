@@ -169,7 +169,20 @@ public class AforoCC {
         log.info ("Consultando Espacios: " + var.size() + " existentes");
         return var;
 	}
+	
+	public long cambiarEstadoEspacio (long id, String estado)
+	{
+        log.info ("Cambiando estado de espacio: " + id);
+        long cambios = pp.cambiarEstadoEspacio(id, estado);
+        return cambios;
+	}
 
+	public long cambiarEstadoNaranja (long id, String estado)
+	{
+        log.info ("Cambiando estado de espacio: " + id);
+        long cambios = pp.cambiarEstadoNarajnaEspacio(id);
+        return cambios;
+	}
 	
 	public List<VOEspacio> darVOEspacios()
 	{
@@ -406,6 +419,13 @@ public class AforoCC {
         List<Visitante> var = pp.darVisitantes();	
         log.info ("Consultando Visitantes: " + var.size() + " existentes");
         return var;
+	}
+	
+	public long cambiarEstadoVisitante (long id, String estado)
+	{
+        log.info ("Cambiando estado de visitante: " + id);
+        long cambios = pp.cambiarEstadoSalud(id, estado);
+        return cambios;
 	}
 
 	

@@ -53,4 +53,6 @@ public class SQLCentroComercial {
 	     q.setParameters(id_horario, idBebedor);
 	     return (long) q.executeUnique();            
 	}	
+	
+	
 }
