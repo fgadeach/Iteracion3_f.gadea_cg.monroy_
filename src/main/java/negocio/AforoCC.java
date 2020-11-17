@@ -177,10 +177,17 @@ public class AforoCC {
         return cambios;
 	}
 
-	public long cambiarEstadoNaranja (long id, String estado)
+	public long cambiarEstadoNaranja (long id)
 	{
         log.info ("Cambiando estado de espacio: " + id);
         long cambios = pp.cambiarEstadoNarajnaEspacio(id);
+        return cambios;
+	}
+	
+	public long rehabilitarEspacio (long id)
+	{
+        log.info ("Cambiando estado de espacio: " + id);
+        long cambios = pp.rehabilitarEspacio(id);
         return cambios;
 	}
 	
@@ -487,6 +494,13 @@ public class AforoCC {
         return var;
 	}
 
+	public List<Establecimiento> darEstablecimientosConAforoDisponible()
+	{
+		log.info ("Consultando Establecimientos");
+        List<Establecimiento> var = pp.darEstablecimientosConaforo();	
+        log.info ("Consultando Establecimientos: " + var.size() + " existentes");
+        return var;
+	}
 	
 	public List<VOEstablecimiento> darVOEstablecimientos()
 	{
